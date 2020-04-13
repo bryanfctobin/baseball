@@ -14,16 +14,18 @@
                 <ul>
                 </ul>
             </nav> -->
-            <h1>Inning <span id="inningCount">-</span></h1>
-            <h1>Home Team: <span id="homeTeamScore">-</span><br>Away Team: <span id="awayTeamScore">-</span></h1>
-            <p><span onclick="homeScore()"><a href="#"><i>Home Score</i></a></span><span onclick="awayScore()"><a href="#"><b>Away Score</b></a></span></p>
-            <p class="someEvent" onclick="incrementInning()">Next Inning</p>
-            <p class="someEvent" onclick="storeGame()">Save Game</p>
-            <p class="someEvent" onclick="restoreGame()">Restore Game</p>
-            <p id="reset" onclick="resetGame()">Reset Game</p>
+            <button onclick="startNewGame()">New Game</button>
+            <button id="restoreBtn" onclick="restoreGame()">Restore Game</button>
+            <div id="gameSection">
+                <h1>Inning <span id="inningCount">-</span></h1>
+                <h1>Home Team:<span id="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away Team: <span id="awayTeamName"></span ><span id="awayTeamScore">-</span></h1>
+                <p><span id="homeScoreButton"><a href="#"><i>Home Score</i></a></span><span id="awayScoreButton"><a href="#"><b>Away Score</b></a></span></p>
+                <p class="someEvent" onclick="incrementInning()">Next Inning</p>
+                <p class="someEvent" onclick="storeGame()">Save Game</p>
+                <p id="reset" onclick="resetGame()">Reset Game</p>
+            </div>
         </header>
-        <!-- <main>
-            <div>
+        <!-- <div>
                 <table>
                     <thead>
                         <tr>
@@ -54,8 +56,6 @@
                         </tr>
                 </table>
             </div>
-        </main> -->
-        <!-- <main>
             <hr>
             <section>
                 <header>
@@ -140,7 +140,6 @@
                     <button type="submit">Submit</button>
                 </form>
             </section>
-        </main>
         <footer>
             <hr>
             <p>
