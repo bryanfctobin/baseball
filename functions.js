@@ -2,6 +2,8 @@
 class Game {
     constructor() {
         this.inning = 0;
+        this.homeTeam;
+        this.awayTeam;
     }
     getInning() {
         return this.inning;
@@ -31,9 +33,9 @@ const homeTeamName = document.querySelector('#homeTeamName');
 const awayTeamName = document.querySelector('#awayTeamName');
 const homeScoreButton = document.querySelector('#homeScoreButton');
 const awayScoreButton = document.querySelector("#awayScoreButton");
-let homeTeam = new Team("Brett's Jets");
-let awayTeam = new Team("Bryan's Lions");   
-let activeGame = new Game();
+// let homeTeam = new Team("Brett's Jets");
+// let awayTeam = new Team("Bryan's Lions");   
+// let activeGame = new Game();
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
     homeTeam.incrementScore();
@@ -91,6 +93,15 @@ function incrementInning() {
 //Starts a New Game
 function startNewGame() {
     gameArea.style.display = "inline";
+    let htn = prompt("Home Team", "Home Team");
+    let atn = prompt("Away Team", "Away Team");
+    let homeTeam = new Team(htn);
+    let awayTeam = new Team(atn);   
+    let activeGame = new Game();
+    activeGame.homeTeam = homeTeam;
+    activeGame.awayTeam = awayTeam;
+    console.log("success");
+    return activeGame;
 }
 //Not being used
 //Roll D4, D12, and D20
