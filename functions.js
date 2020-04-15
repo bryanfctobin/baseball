@@ -106,8 +106,8 @@ function incrementInning() {
 //Starts a New Game
 function startNewGame() {
     gameArea.style.display = "inline";
-    let htn = prompt("Home Team", "Home Team");
-    let atn = prompt("Away Team", "Away Team");
+    let htn = prompt("Home Team");
+    let atn = prompt("Away Team");
     let homeTeam = new Team(htn);
     let awayTeam = new Team(atn);   
     activeGame = new Game();
