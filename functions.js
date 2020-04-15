@@ -33,6 +33,7 @@ const homeTeamName = document.querySelector('#homeTeamName');
 const awayTeamName = document.querySelector('#awayTeamName');
 const homeScoreButton = document.querySelector('#homeScoreButton');
 const awayScoreButton = document.querySelector("#awayScoreButton");
+const newGameButton = document.querySelector("#startNewGameBtn");
 let activeGame;
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
@@ -44,13 +45,6 @@ awayScoreButton.addEventListener("click", function() {
     awayBtn.textContent = activeGame.awayTeam.score; 
 })
 function resetGame() {
-    let htn = prompt("Home Team", "Home Team");
-    let atn = prompt("Away Team", "Away Team");
-    let homeTeam = new Team(htn);
-    let awayTeam = new Team(atn);   
-    activeGame = new Game();
-    activeGame.homeTeam = homeTeam;
-    activeGame.awayTeam = awayTeam;
     activeGame.homeTeam.score = 0;
     activeGame.awayTeam.score = 0;
     activeGame.inning = 0;
@@ -59,7 +53,6 @@ function resetGame() {
     homeTeamName.textContent = activeGame.homeTeam.name;
     awayTeamName.textContent = activeGame.awayTeam.name;
     inningDisplay.textContent = activeGame.inning;
-    localStorage.clear()
 }
 //Store Game in localStorage
 function storeGame() {
