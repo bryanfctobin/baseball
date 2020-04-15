@@ -78,8 +78,8 @@ function restoreGame() {
         alert("No saved game, starting a new game!");
         activeGame.homeTeam = new Team();
         activeGame.awayTeam = new Team();
-        activeGame.homeTeam.name = prompt("Home Team", "Home Team");
-        activeGame.awayTeam.name = prompt("Away Team", "Away Team");
+        activeGame.homeTeam.name = prompt("Home Team");
+        activeGame.awayTeam.name = prompt("Away Team");
         activeGame.homeTeam.score = 0;
         activeGame.awayTeam.score = 0;
         activeGame.inning = 0;
