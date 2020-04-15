@@ -117,6 +117,7 @@ function startNewGame() {
     awayTeamName.textContent = activeGame.awayTeam.name;
     homeBtn.textContent = activeGame.homeTeam.score;
     awayBtn.textContent = activeGame.awayTeam.score;
+    inningDisplay.textContent = activeGame.inning;
     console.log("success");
     return activeGame;
 }
