@@ -1,7 +1,7 @@
 //Classes
 class Game {
     constructor() {
-        this.inning = 0;
+        this.inning = 1;
         this.homeTeam;
         this.awayTeam;
     }
@@ -28,12 +28,16 @@ class Team {
 const inningDisplay = document.querySelector('#inningCount');
 const homeBtn = document.querySelector('#homeTeamScore');
 const awayBtn = document.querySelector('#awayTeamScore');
-const gameArea = document.querySelector('#gameSection');
-const homeTeamName = document.querySelector('#homeTeamName');
-const awayTeamName = document.querySelector('#awayTeamName');
+const gameArea = document.querySelectorAll('.gameSection');
+const homeTeamName = document.querySelectorAll('.homeTeamName');
+const awayTeamName = document.querySelectorAll('.awayTeamName');
 const homeScoreButton = document.querySelector('#homeScoreButton');
 const awayScoreButton = document.querySelector("#awayScoreButton");
 const newGameButton = document.querySelector("#startNewGameBtn");
+const lastScore = {
+    home:0,
+    away:0
+}
 let activeGame;
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
@@ -50,8 +54,12 @@ function resetGame() {
     activeGame.inning = 0;
     homeBtn.textContent = activeGame.homeTeam.score; 
     awayBtn.textContent = activeGame.awayTeam.score; 
-    homeTeamName.textContent = activeGame.homeTeam.name;
-    awayTeamName.textContent = activeGame.awayTeam.name;
+    homeTeamName.forEach((n)=>{
+        n.textContent = activeGame.homeTeam.name;
+    });
+    awayTeamName.forEach((n)=>{
+        n.textContent = activeGame.awayTeam.name;
+    })
     inningDisplay.textContent = activeGame.inning;
 }
 //Store Game in localStorage
@@ -66,7 +74,9 @@ function storeGame() {
 //Restores a Game
 function restoreGame() { 
     activeGame = new Game();
-    gameArea.style.display = "inline";
+    gameArea.forEach((n)=>{
+        n.style.display = "inline";
+    });
     if (localStorage.getItem("homeScore") === null) {
         alert("No saved game, starting a new game!");
         activeGame.homeTeam = new Team();
@@ -87,18 +97,25 @@ function restoreGame() {
     }
     homeBtn.textContent = activeGame.homeTeam.score;
     awayBtn.textContent = activeGame.awayTeam.score;
-    homeTeamName.textContent = activeGame.homeTeam.name;
-    awayTeamName.textContent = activeGame.awayTeam.name;
+    homeTeamName.forEach((n)=>{
+        n.textContent = activeGame.homeTeam.name;
+    });
+    awayTeamName.forEach((n)=>{
+        n.textContent = activeGame.awayTeam.name;
+    })
     inningDisplay.textContent = activeGame.inning;
 }
 //Track inning
 function incrementInning() {
+    updateTable();
     activeGame.inning += 1;
     inningDisplay.textContent = activeGame.inning;
 }
 //Starts a New Game
 function startNewGame() {
-    gameArea.style.display = "inline";
+    gameArea.forEach((n)=>{
+        n.style.display = "inline";
+    });
     let htn = prompt("Home Team");
     let atn = prompt("Away Team");
     let homeTeam = new Team(htn);
@@ -106,8 +123,12 @@ function startNewGame() {
     activeGame = new Game();
     activeGame.homeTeam = homeTeam;
     activeGame.awayTeam = awayTeam;
-    homeTeamName.textContent = activeGame.homeTeam.name;
-    awayTeamName.textContent = activeGame.awayTeam.name;
+    homeTeamName.forEach((n)=>{
+        n.textContent = activeGame.homeTeam.name;
+    });
+    awayTeamName.forEach((n)=>{
+        n.textContent = activeGame.awayTeam.name;
+    })
     homeBtn.textContent = activeGame.homeTeam.score;
     awayBtn.textContent = activeGame.awayTeam.score;
     inningDisplay.textContent = activeGame.inning;
@@ -116,3 +137,13 @@ function startNewGame() {
 }
 //To-do
 //Store inning scores in a table
+function updateTable() {
+    let activeInning = activeGame.getInning();
+    let homeScoreID = "#hs" + activeInning;
+    let awayScoreID = "#as" + activeInning;
+    document.querySelector(homeScoreID).textContent = activeGame.homeTeam.score - lastScore.home;
+    document.querySelector(awayScoreID).textContent = activeGame.awayTeam.score - lastScore.away;
+    lastScore.home = activeGame.homeTeam.score;
+    lastScore.away = activeGame.awayTeam.score;
+    return lastScore;
+}

@@ -16,47 +16,42 @@
             </nav> -->
             <button id="startNewGameBtn" onclick="startNewGame()">New Game</button>
             <button id="restoreBtn" onclick="restoreGame()">Restore Game</button>
-            <div id="gameSection">
+            <div class="gameSection">
                 <h1>Inning <span id="inningCount">-</span></h1>
-                <h1>Home: <span id="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away: <span id="awayTeamName"></span> <span id="awayTeamScore">-</span></h1>
+                <h1>Home: <span class="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away: <span class="awayTeamName"></span> <span id="awayTeamScore">-</span></h1>
                 <p><span id="homeScoreButton"><a href="#"><i>Home Score</i></a></span><span id="awayScoreButton"><a href="#"><b>Away Score</b></a></span></p>
                 <p class="someEvent" onclick="incrementInning()">Next Inning</p>
                 <p class="someEvent" onclick="storeGame()">Save Game</p>
                 <p id="reset" onclick="resetGame()">Reset Game</p>
             </div>
         </header>
-        <!-- <div>
+        <div class="center gameSection">
+            <div>
                 <table>
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Team</th>
                             <th>1</th>
                             <th>2</th>
                             <th>3</th>
-                            <th>4</th>
-                            <th>5</th>
-                            <th>6</th>
-                            <th>7</th>
-                            <th>8</th>
-                            <th>9</th>
                         </tr>
                     </thead>
                         <tr>
-                            <td>Home</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th class="homeTeamName">Home</th>
+                            <td id="hs1"></td>
+                            <td id="hs2"></td>
+                            <td id="hs3"></td>
                         </tr>
                         <tr>
-                            <td>Away</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th class="awayTeamName">Away</th>
+                            <td id="as1"></td>
+                            <td id="as2"></td>
+                            <td id="as3"></td>
                         </tr>
                 </table>
             </div>
-            <hr>
+        </div>
+            <!-- <hr>
             <section>
                 <header>
                     <h2>Section Heading</h2>

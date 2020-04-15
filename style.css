@@ -358,6 +358,9 @@ blockquote footer {
     background-color: red;
     border-color: red;
 }
-#gameSection {
+.gameSection {
     display:none;
+}
+.center table {
+    margin: auto;
 }
