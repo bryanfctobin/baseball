@@ -33,9 +33,9 @@ const homeTeamName = document.querySelector('#homeTeamName');
 const awayTeamName = document.querySelector('#awayTeamName');
 const homeScoreButton = document.querySelector('#homeScoreButton');
 const awayScoreButton = document.querySelector("#awayScoreButton");
+let activeGame;
 // let homeTeam = new Team("Brett's Jets");
 // let awayTeam = new Team("Bryan's Lions");   
-// let activeGame = new Game();
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
     homeTeam.incrementScore();
@@ -97,7 +97,7 @@ function startNewGame() {
     let atn = prompt("Away Team", "Away Team");
     let homeTeam = new Team(htn);
     let awayTeam = new Team(atn);   
-    let activeGame = new Game();
+    activeGame = new Game();
     activeGame.homeTeam = homeTeam;
     activeGame.awayTeam = awayTeam;
     console.log("success");
