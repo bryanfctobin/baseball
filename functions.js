@@ -24,7 +24,7 @@ class Team {
         this.score+=1;
     }
 }
-//Variables
+//UI
 const inningDisplay = document.querySelector('#inningCount');
 const homeBtn = document.querySelector('#homeTeamScore');
 const awayBtn = document.querySelector('#awayTeamScore');
@@ -34,56 +34,69 @@ const awayTeamName = document.querySelector('#awayTeamName');
 const homeScoreButton = document.querySelector('#homeScoreButton');
 const awayScoreButton = document.querySelector("#awayScoreButton");
 let activeGame;
-// let homeTeam = new Team("Brett's Jets");
-// let awayTeam = new Team("Bryan's Lions");   
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
-    homeTeam.incrementScore();
-    homeBtn.textContent = homeTeam.score; 
+    activeGame.homeTeam.incrementScore();
+    homeBtn.textContent = activeGame.homeTeam.score; 
 })
 awayScoreButton.addEventListener("click", function() {
-    awayTeam.incrementScore();
-    awayBtn.textContent = awayTeam.score; 
+    activeGame.awayTeam.incrementScore();
+    awayBtn.textContent = activeGame.awayTeam.score; 
 })
 function resetGame() {
-    homeTeam.score = 0;
-    awayTeam.score = 0;
+    let htn = prompt("Home Team", "Home Team");
+    let atn = prompt("Away Team", "Away Team");
+    let homeTeam = new Team(htn);
+    let awayTeam = new Team(atn);   
+    activeGame = new Game();
+    activeGame.homeTeam = homeTeam;
+    activeGame.awayTeam = awayTeam;
+    activeGame.homeTeam.score = 0;
+    activeGame.awayTeam.score = 0;
     activeGame.inning = 0;
-    homeBtn.textContent = homeTeam.score; 
-    awayBtn.textContent = awayTeam.score; 
+    homeBtn.textContent = activeGame.homeTeam.score; 
+    awayBtn.textContent = activeGame.awayTeam.score; 
+    homeTeamName.textContent = activeGame.homeTeam.name;
+    awayTeamName.textContent = activeGame.awayTeam.name;
     inningDisplay.textContent = activeGame.inning;
     localStorage.clear()
 }
-//Store inning scores in a table
 //Store Game in localStorage
 function storeGame() {
-    localStorage.setItem("homeScore",homeTeam.score);
-    localStorage.setItem("awayScore",awayTeam.score);
+    localStorage.setItem("homeScore",activeGame.homeTeam.score);
+    localStorage.setItem("htn", activeGame.homeTeam.name);
+    localStorage.setItem("awayScore",activeGame.awayTeam.score);
+    localStorage.setItem("atn", activeGame.awayTeam.name);
     localStorage.setItem("inning", activeGame.inning);
+    alert("Game is saved!")
 }
 //Restores a Game
-function restoreGame() {
+function restoreGame() { 
+    activeGame = new Game();
     gameArea.style.display = "inline";
     if (localStorage.getItem("homeScore") === null) {
-        homeTeam.score = 0;
-        awayTeam.score = 0;
+        alert("No saved game, starting a new game!");
+        activeGame.homeTeam = new Team();
+        activeGame.awayTeam = new Team();
+        activeGame.homeTeam.name = prompt("Home Team", "Home Team");
+        activeGame.awayTeam.name = prompt("Away Team", "Away Team");
+        activeGame.homeTeam.score = 0;
+        activeGame.awayTeam.score = 0;
         activeGame.inning = 0;
     } else {
-        homeTeam.score =  parseInt(localStorage.getItem("homeScore"));
-        awayTeam.score = parseInt(localStorage.getItem("awayScore"));
+        activeGame.homeTeam = new Team();
+        activeGame.awayTeam = new Team();
+        activeGame.homeTeam.score =  parseInt(localStorage.getItem("homeScore"));
+        activeGame.homeTeam.name = localStorage.getItem("htn");
+        activeGame.awayTeam.score = parseInt(localStorage.getItem("awayScore"));
+        activeGame.awayTeam.name = localStorage.getItem("atn");
         activeGame.inning = parseInt(localStorage.getItem("inning"));    
     }
-    homeBtn.textContent = homeTeam.score;
-    awayBtn.textContent = awayTeam.score;
+    homeBtn.textContent = activeGame.homeTeam.score;
+    awayBtn.textContent = activeGame.awayTeam.score;
+    homeTeamName.textContent = activeGame.homeTeam.name;
+    awayTeamName.textContent = activeGame.awayTeam.name;
     inningDisplay.textContent = activeGame.inning;
-}
-function homeScore() {
-    homeTeam.score += 1;
-    homeBtn.textContent = homeTeam.score; 
-}
-function awayScore() {
-    awayTeam.score += 1;
-    awayBtn.textContent = awayTeam.score; 
 }
 //Track inning
 function incrementInning() {
@@ -100,21 +113,12 @@ function startNewGame() {
     activeGame = new Game();
     activeGame.homeTeam = homeTeam;
     activeGame.awayTeam = awayTeam;
+    homeTeamName.textContent = activeGame.homeTeam.name;
+    awayTeamName.textContent = activeGame.awayTeam.name;
+    homeBtn.textContent = activeGame.homeTeam.score;
+    awayBtn.textContent = activeGame.awayTeam.score;
     console.log("success");
     return activeGame;
 }
-//Not being used
-//Roll D4, D12, and D20
-function dieRoll(x) {
-    return Math.floor(Math.random() * x) + 0;
-}
-const dice = {
-    name: "Bryan",
-    roll: dieRoll
-}
-const nice = {
-    name: "Brett",
-    roll: function(x) {
-        return Math.floor(Math.random() * x) + 0;
-    }
-}
+//To-do
+//Store inning scores in a table
