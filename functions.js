@@ -51,7 +51,7 @@ awayScoreButton.addEventListener("click", function() {
 function resetGame() {
     activeGame.homeTeam.score = 0;
     activeGame.awayTeam.score = 0;
-    activeGame.inning = 0;
+    activeGame.inning = 1;
     homeBtn.textContent = activeGame.homeTeam.score; 
     awayBtn.textContent = activeGame.awayTeam.score; 
     homeTeamName.forEach((n)=>{
