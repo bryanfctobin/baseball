@@ -358,6 +358,11 @@ blockquote footer {
     background-color: red;
     border-color: red;
 }
+.center {
+    margin:auto;
+    align-items:center;
+    text-align: center;
+}
 .gameSection {
     display:none;
 }

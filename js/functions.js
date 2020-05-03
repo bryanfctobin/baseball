@@ -116,8 +116,10 @@ function startNewGame() {
     gameArea.forEach((n)=>{
         n.style.display = "inline";
     });
-    let htn = prompt("Home Team");
-    let atn = prompt("Away Team");
+    // let htn = prompt("Home Team");
+    let htn = "Dog";
+    let atn = "Cat";
+    // let atn = prompt("Away Team");
     let homeTeam = new Team(htn);
     let awayTeam = new Team(atn);   
     activeGame = new Game();
@@ -147,3 +149,4 @@ function updateTable() {
     lastScore.away = activeGame.awayTeam.score;
     return lastScore;
 }
+startNewGame();
