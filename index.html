@@ -14,14 +14,15 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <header>
+        <!-- <header></header> -->
+        <div id="fullNav">
             <nav>
-                <a href="/"><img src="" height="70"></a>
+                <a href="/"><img src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" height="70"></a>
+                <ul>
+                    <li><span id="startNewGameBtn" onclick="startNewGame()">New Game</span></li>
+                    <li><span id="restoreBtn" onclick="restoreGame()">Restore Game</span></li>
+                </ul>
             </nav>
-        </header>
-        <div class="pregame">
-            <button id="startNewGameBtn" onclick="startNewGame()">New Game</button>
-            <button id="restoreBtn" onclick="restoreGame()">Restore Game</button>
         </div>
         <div class="gameSection">
             <h1>Inning <span id="inningCount">-</span></h1>

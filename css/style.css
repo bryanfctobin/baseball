@@ -36,7 +36,7 @@ body {
     line-height: var(--line-height);
     margin: 0;
     overflow-x: hidden;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
 }
 
 footer,
@@ -348,7 +348,7 @@ blockquote footer {
 #reset, .someEvent {
     cursor: pointer;
 }
-#restoreBtn {
+.alt-Btn {
     border-radius: var(--border-radius);
     display: inline-block;
     font-size: medium;
@@ -363,4 +363,14 @@ blockquote footer {
 }
 .center table {
     margin: auto;
+}
+#fullNav {
+    background-color:green;
+    color:white;
+}
+#fullNav nav {
+    margin: 0 10%;
+}
+#fullNav span {
+    cursor:pointer;
 }
