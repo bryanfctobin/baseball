@@ -25,20 +25,20 @@
             </nav>
         </div>
         <div class="center gameSection">
-            <h1>Inning <span id="inningCount">-</span></h1>
-            <h1>Home: <span class="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away: <span class="awayTeamName"></span> <span id="awayTeamScore">-</span></h1>
-            <p><span id="homeScoreButton"><a href="#"><i>Home Score</i></a></span><span id="awayScoreButton"><a href="#"><b>Away Score</b></a></span></p>
-            <p class="someEvent" onclick="incrementInning()">Next Inning</p>
-            <p class="someEvent" onclick="storeGame()">Save Game</p>
-            <p id="reset" onclick="resetGame()">Reset Game</p>
-            <div>
+            <div id="perInningScoring">
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Team</th>
                             <th>1</th>
                             <th>2</th>
                             <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
                         </tr>
                     </thead>
                         <tr>
@@ -46,15 +46,37 @@
                             <td id="hs1"></td>
                             <td id="hs2"></td>
                             <td id="hs3"></td>
+                            <td id="hs4"></td>
+                            <td id="hs5"></td>
+                            <td id="hs6"></td>
+                            <td id="hs7"></td>
+                            <td id="hs8"></td>
+                            <td id="hs9"></td>
                         </tr>
                         <tr>
                             <th class="awayTeamName">Away</th>
                             <td id="as1"></td>
                             <td id="as2"></td>
                             <td id="as3"></td>
+                            <td id="as4"></td>
+                            <td id="as5"></td>
+                            <td id="as6"></td>
+                            <td id="as7"></td>
+                            <td id="as8"></td>
+                            <dt id="as9"></dt>
                         </tr>
                 </table>
             </div>
+            <div class="scoreboard">
+                <h1>Inning <span id="inningCount">-</span></h1>
+                <h1>Home: <span class="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away: <span class="awayTeamName"></span> <span id="awayTeamScore">-</span></h1>
+                <p><span id="homeScoreButton"><a href="#"><i>Home Score</i></a></span><span id="awayScoreButton"><a href="#"><b>Away Score</b></a></span></p>
+            </div>
+            <div id="gameControls">
+                <p class="someEvent" onclick="incrementInning()">Next Inning</p>
+                <p class="someEvent" onclick="storeGame()">Save Game</p>
+                <p id="reset" onclick="resetGame()">Reset Game</p>
+            </div>    
         </div>
         <script src="js/vendor/modernizr-3.8.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
