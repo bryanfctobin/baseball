@@ -41,7 +41,7 @@ const lastScore = {
 let activeGame;
 //Event Handlers
 homeScoreButton.addEventListener("click", function() {
-    activeGame.homeTeam.incrementScore();
+    activeGame.homeTeam.score = activeGame.homeTeam.score + 1;
     homeBtn.textContent = activeGame.homeTeam.score; 
 })
 awayScoreButton.addEventListener("click", function() {
@@ -64,36 +64,29 @@ function resetGame() {
 }
 //Store Game in localStorage
 function storeGame() {
-    localStorage.setItem("homeScore",activeGame.homeTeam.score);
-    localStorage.setItem("htn", activeGame.homeTeam.name);
-    localStorage.setItem("awayScore",activeGame.awayTeam.score);
-    localStorage.setItem("atn", activeGame.awayTeam.name);
-    localStorage.setItem("inning", activeGame.inning);
+    localStorage.setItem('activeGame', JSON.stringify(activeGame));
     alert("Game is saved!")
 }
 //Restores a Game
 function restoreGame() { 
-    activeGame = new Game();
     gameArea.forEach((n)=>{
         n.style.display = "inline";
     });
-    if (localStorage.getItem("homeScore") === null) {
+    if (localStorage.getItem('activeGame') === null) {
         alert("No saved game, starting a new game!");
-        activeGame.homeTeam = new Team();
-        activeGame.awayTeam = new Team();
-        activeGame.homeTeam.name = prompt("Home Team");
-        activeGame.awayTeam.name = prompt("Away Team");
-        activeGame.homeTeam.score = 0;
-        activeGame.awayTeam.score = 0;
-        activeGame.inning = 0;
+        startNewGame();
     } else {
-        activeGame.homeTeam = new Team();
-        activeGame.awayTeam = new Team();
-        activeGame.homeTeam.score =  parseInt(localStorage.getItem("homeScore"));
-        activeGame.homeTeam.name = localStorage.getItem("htn");
-        activeGame.awayTeam.score = parseInt(localStorage.getItem("awayScore"));
-        activeGame.awayTeam.name = localStorage.getItem("atn");
-        activeGame.inning = parseInt(localStorage.getItem("inning"));    
+        restoredGame = JSON.parse(localStorage.getItem('activeGame'));
+        let h = restoredGame.homeTeam.name;
+        let a = restoredGame.awayTeam.name;
+        let homeTeam = new Team(h);
+        let awayTeam = new Team(a);
+        activeGame = new Game();
+        activeGame.homeTeam = homeTeam;
+        activeGame.awayTeam = awayTeam;
+        activeGame.homeTeam.score = restoredGame.homeTeam.score;
+        activeGame.awayTeam.score = restoredGame.awayTeam.score;
+        activeGame.inning = restoredGame.inning;
     }
     homeBtn.textContent = activeGame.homeTeam.score;
     awayBtn.textContent = activeGame.awayTeam.score;
@@ -149,4 +142,3 @@ function updateTable() {
     lastScore.away = activeGame.awayTeam.score;
     return lastScore;
 }
-startNewGame();
