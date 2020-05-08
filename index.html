@@ -56,7 +56,7 @@
                 var g = JSON.parse(localStorage.getItem('activeGame'));
                 return g.inning;
             }
-            let inn = getInnin();
+            let inn = getInning();
             window.admiral("targeting", "set", "inning", inn);
             window.admiral("targeting", "ready");
         </script>
