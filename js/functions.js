@@ -100,9 +100,12 @@ function restoreGame() {
 }
 //Track inning
 function incrementInning() {
-    updateTable();
-    activeGame.inning += 1;
-    inningDisplay.textContent = activeGame.inning;
+    if (activeGame.inning >= 9) {
+        alert("Game Over");
+    } else {
+        activeGame.inning += 1;
+        inningDisplay.textContent = activeGame.inning;
+    }
 }
 //Starts a New Game
 function startNewGame() {
@@ -130,7 +133,6 @@ function startNewGame() {
     console.log("success");
     return activeGame;
 }
-//To-do
 //Store inning scores in a table
 function updateTable() {
     let activeInning = activeGame.getInning();

@@ -19,7 +19,6 @@
         </script> -->
     </head>
     <body>
-        <!-- <header></header> -->
         <div id="fullNav">
             <nav>
                 <a href="/"><img src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg" height="70"></a>
@@ -30,48 +29,6 @@
             </nav>
         </div>
         <div class="center gameSection">
-            <div id="perInningScoring">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Team</th>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
-                            <th>5</th>
-                            <th>6</th>
-                            <th>7</th>
-                            <th>8</th>
-                            <th>9</th>
-                        </tr>
-                    </thead>
-                        <tr>
-                            <th class="homeTeamName">Home</th>
-                            <td id="hs1"></td>
-                            <td id="hs2"></td>
-                            <td id="hs3"></td>
-                            <td id="hs4"></td>
-                            <td id="hs5"></td>
-                            <td id="hs6"></td>
-                            <td id="hs7"></td>
-                            <td id="hs8"></td>
-                            <td id="hs9"></td>
-                        </tr>
-                        <tr>
-                            <th class="awayTeamName">Away</th>
-                            <td id="as1"></td>
-                            <td id="as2"></td>
-                            <td id="as3"></td>
-                            <td id="as4"></td>
-                            <td id="as5"></td>
-                            <td id="as6"></td>
-                            <td id="as7"></td>
-                            <td id="as8"></td>
-                            <dt id="as9"></dt>
-                        </tr>
-                </table>
-            </div>
             <div class="scoreboard">
                 <h1>Inning <span id="inningCount">-</span></h1>
                 <h1>Home: <span class="homeTeamName"></span> <span id="homeTeamScore">-</span><br>Away: <span class="awayTeamName"></span> <span id="awayTeamScore">-</span></h1>
@@ -94,13 +51,5 @@
             ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async></script>
-        <!-- <script>
-            function getInning() {
-                return localStorage.getItem('inning');
-            }
-            let inn = getInning();
-            window.admiral("targeting", "set", "inning", inn);
-            window.admiral("targeting", "ready");
-        </script> -->
     </body>
 </html>
