@@ -23,13 +23,13 @@
             window.admiral = window.admiral || function() {(admiral.q = admiral.q || []).push(arguments)};
             // Sets a timeout to run if Engage isn't displayed.
             var timeout = setTimeout(function() {
-                engageStatus = "false";
+                engageStatus = false;
                 console.log("No Engage Displayed");
             },3000);
             // Checks to see if Engage rendered.
             window.admiral('after','engage.loaded',function(obj) {
                 if (obj.rendered) {
-                    engageStatus = "true";
+                    engageStatus = true;
                     console.log("Engage rendered. CandidateID: " + obj.candidateID);
                     // Clears timeout if Engage does render
                     clearTimeout(timeout);
